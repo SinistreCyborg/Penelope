@@ -1,0 +1,17 @@
+{
+  "name": "penelope",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "GPL-3.0",
+  "scripts": {
+    "start": "node dist/index.js",
+    "prestart": "node_modules/.bin/tsc"
+  },
+  "dependencies": {
+    "eris": "abalabahaha/eris#dev"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.8",
+    "typescript": "^3.6.0-dev.20190620"
+  }
+}

@@ -1,4 +1,4 @@
-import { Command, Penelope, EMBED_COLOR } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, APIs } from "../..";
 import { Message, User } from "eris";
 
 export default class extends Command {
@@ -18,10 +18,7 @@ export default class extends Command {
 
     private waifu(author: User): object {
         return {
-            color: EMBED_COLOR,
-            image: {
-                url: `https://www.thiswaifudoesnotexist.net/example-${Math.floor(Math.random() * 100000)}.jpg`
-            },
+            color, image: { url: APIs.WAIFU },
             footer: {
                 text: `Requested by ${author.username}#${author.discriminator}`,
                 icon_url: author.avatarURL

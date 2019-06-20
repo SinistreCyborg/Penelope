@@ -1,4 +1,4 @@
-import { Command, Penelope, EMBED_COLOR as color } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, APIs } from "../..";
 import { Message } from "eris";
 import fetch from "node-fetch";
 
@@ -14,7 +14,7 @@ export default class extends Command {
 
     async exec(message: Message) {
 
-        const { quote } = await fetch("https://thanosapi.herokuapp.com/random/")
+        const { quote } = await fetch(APIs.THANOS)
             .then(res => res.json());
 
         

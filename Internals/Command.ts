@@ -1,4 +1,5 @@
-import { Client, Message } from "eris";
+import { Message } from "eris";
+import { Penelope } from "..";
 
 interface CommandSettings {
     name: string;
@@ -14,7 +15,7 @@ interface CommandSettings {
 
 export abstract class Command implements CommandSettings {
 
-    client: Client;
+    client: Penelope;
     readonly name: string;
 
     readonly category: string;
@@ -26,7 +27,7 @@ export abstract class Command implements CommandSettings {
     readonly ownerOnly: boolean;
     readonly requiredPerms: string[];
 
-    constructor(client: Client, {
+    constructor(client: Penelope, {
         name, category, description,
         aliases = [],
         usage = "",

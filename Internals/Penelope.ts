@@ -66,4 +66,8 @@ export class Penelope extends Eris.Client {
 
     }
 
+    resolveCmd(name: string): Command | undefined {
+        return this.commands.get(name) || this.aliases.get(name);
+    }
+
 }

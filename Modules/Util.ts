@@ -16,4 +16,8 @@ export class Util {
         return typeof input === "function";
     }
 
+    static random(input: any[]): any {
+        return input[Math.floor(Math.random() * input.length)];
+    }
+
 }

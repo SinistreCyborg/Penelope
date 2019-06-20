@@ -1,5 +1,5 @@
 import Eris from "eris";
-import { Command } from "..";
+import { Command, Console } from "..";
 
 import { readFileSync, readdirSync, lstatSync } from "fs";
 import path from "path";
@@ -30,6 +30,8 @@ export class Penelope extends Eris.Client {
             if (!file.endsWith(".js")) continue;
 
             const event = new (require(path.join(evt_path, file)).default)(this, name(file));
+            Console.log("EventLoader", `Binding ${event.name} event.`);
+
             this.on(event.name, (...args) => event.exec(...args));
 
         }
@@ -40,6 +42,8 @@ export class Penelope extends Eris.Client {
             if (!file.endsWith(".js")) continue;
 
             const command = new (require(file).default)(this, name(file));
+            Console.log("CommandLoader", `Loading ${command.name} command.`);
+
             this.commands.set(command.name, command);
 
         }

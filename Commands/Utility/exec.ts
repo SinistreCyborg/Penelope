@@ -10,7 +10,7 @@ export default class extends Command {
         super(client, {
             name: "exec",
             description: "Execute commands in the terminal.",
-            category: "\\🛠 Utility",
+            category: "🛠 Utility",
             usage: "<code>",
             ownerOnly: true,
             hidden: true

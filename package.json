@@ -8,6 +8,7 @@
     "prestart": "node_modules/.bin/tsc"
   },
   "dependencies": {
+    "chalk": "^2.4.2",
     "eris": "abalabahaha/eris#dev",
     "js-yaml": "^3.13.1"
   },

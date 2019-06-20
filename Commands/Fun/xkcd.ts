@@ -2,20 +2,6 @@ import { Command, Penelope, EMBED_COLOR as color, APIs } from "../..";
 import { Message } from "eris";
 import fetch from "node-fetch";
 
-type XKCDResult = {
-    month: string;
-    num: number;
-    link: string;
-    year: string;
-    news: string;
-    safe_title: string;
-    transcript: string;
-    alt: string;
-    img: string;
-    title: string;
-    day: string;
-};
-
 export default class extends Command {
 
     constructor(client: Penelope) {
@@ -28,7 +14,7 @@ export default class extends Command {
 
     async exec(message: Message) {
 
-        const { safe_title: title, img: url }: XKCDResult = await fetch(APIs.XKCD)
+        const { safe_title: title, img: url } = await fetch(APIs.XKCD)
             .then(res => res.json());
 
         return message.channel.createMessage({ embed: {

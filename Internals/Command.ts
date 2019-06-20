@@ -40,13 +40,13 @@ export abstract class Command implements CommandSettings {
         this.name = name;
 
         this.category = category;
-		this.description = description;
-		this.aliases = aliases;
+        this.description = description;
+        this.aliases = aliases;
         this.usage = usage;
         this.hidden = hidden;
-		this.guildOnly = guildOnly;
-		this.ownerOnly = ownerOnly;
-		this.requiredPerms = requiredPerms;
+        this.guildOnly = guildOnly;
+        this.ownerOnly = ownerOnly;
+        this.requiredPerms = requiredPerms;
 
     }
 

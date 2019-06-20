@@ -25,7 +25,7 @@ export class Penelope extends Eris.Client {
         Object.assign(this, settings);
 
         // Load events.
-        const evt_path = path.join(process.cwd(), "dist", "events");
+        const evt_path = path.join(process.cwd(), "dist", "Internals", "Events");
         for (const file of readdirSync(evt_path)) {
             if (!file.endsWith(".js")) continue;
 
@@ -37,7 +37,7 @@ export class Penelope extends Eris.Client {
         }
 
         // Load commands.
-        const cmd_path = path.join(process.cwd(), "dist", "commands");
+        const cmd_path = path.join(process.cwd(), "dist", "Commands");
         for (const file of this.walk(cmd_path)) {
             if (!file.endsWith(".js")) continue;
 

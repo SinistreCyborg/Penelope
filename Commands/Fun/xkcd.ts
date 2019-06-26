@@ -1,6 +1,5 @@
-import { Command, Penelope, EMBED_COLOR as color, APIs } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, APIs, fetch as $ } from "../..";
 import { Message } from "eris";
-import fetch from "node-fetch";
 
 export default class extends Command {
 
@@ -14,7 +13,7 @@ export default class extends Command {
 
     async exec(message: Message) {
 
-        const { safe_title: title, img: url } = await fetch(APIs.XKCD)
+        const { safe_title: title, img: url } = await $(APIs.XKCD)
             .then(res => res.json());
 
         return message.channel.createMessage({ embed: {

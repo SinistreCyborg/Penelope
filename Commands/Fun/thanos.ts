@@ -1,6 +1,5 @@
-import { Command, Penelope, EMBED_COLOR as color, APIs } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, APIs, fetch as $ } from "../..";
 import { Message } from "eris";
-import fetch from "node-fetch";
 
 export default class extends Command {
 
@@ -14,7 +13,7 @@ export default class extends Command {
 
     async exec(message: Message) {
 
-        const { quote } = await fetch(APIs.THANOS)
+        const { quote } = await $(APIs.THANOS)
             .then(res => res.json());
 
         

@@ -1,6 +1,5 @@
-import { Command, Penelope, EMBED_COLOR as color, APIs } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, APIs, fetch as $ } from "../..";
 import { Message, TextChannel } from "eris";
-import fetch from "node-fetch";
 
 export default class extends Command {
 
@@ -25,7 +24,7 @@ export default class extends Command {
             posterImage: {
                 original: url
             }
-        } = await fetch(APIs.ANIME(name.join(" ")))
+        } = await $(APIs.ANIME(name.join(" ")))
             .then(res => res.json())
             .then(body => body.data[0].attributes);
 

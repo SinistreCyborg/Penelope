@@ -1,6 +1,5 @@
-import { Command, Penelope, EMBED_COLOR as color, APIs } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, APIs, fetch as $ } from "../..";
 import { Message, TextChannel } from "eris";
-import fetch from "node-fetch";
 
 export default class extends Command {
 
@@ -22,7 +21,7 @@ export default class extends Command {
             ["query", name.join(" ")]
         ]);
 
-        const { title, poster_path, overview: description, adult, id } = await fetch(url)
+        const { title, poster_path, overview: description, adult, id } = await $(url)
             .then(res => res.json())
             .then(body => body.results[0]);
 

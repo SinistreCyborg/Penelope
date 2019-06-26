@@ -1,6 +1,5 @@
-import { Command, Penelope, EMBED_COLOR as color, Util, APIs } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, Util, APIs, fetch as $ } from "../..";
 import { Message } from "eris";
-import fetch from "node-fetch";
 
 export default class extends Command {
 
@@ -14,7 +13,7 @@ export default class extends Command {
 
     async exec(message: Message) {
 
-        const { title, hash, ext, reddit: subreddit } = await fetch(APIs.IMGUR("foodporn"))
+        const { title, hash, ext, reddit: subreddit } = await $(APIs.IMGUR("foodporn"))
             .then(res => res.json())
             .then(body => Util.random(body.data));
         

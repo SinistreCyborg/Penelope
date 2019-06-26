@@ -7,4 +7,5 @@ export const APIs = {
     WAIFU: `https://www.thiswaifudoesnotexist.net/example-${Math.floor(Math.random() * 100000)}.jpg`,
     XKCD: "http://xkcd.com/info.0.json",
     IMGUR: (subreddit: string) => `https://imgur.com/r/${subreddit}/hot.json`,
+    ANIMAL: (type: string) => `https://some-random-api.ml/img/${type}`,
 };

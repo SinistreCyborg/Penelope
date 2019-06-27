@@ -13,8 +13,6 @@ export default class extends Monitor {
             ? (await Guild.findOne({ where: { id: message.channel.guild.id } }))!.prefix
             : this.client.prefix;
 
-        console.log(prefix);
-
         if (
             message.author.bot ||
             [prefix, `<@${this.client.user.id}>`].every(i => !message.content.startsWith(i))

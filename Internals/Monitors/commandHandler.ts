@@ -1,5 +1,5 @@
-import { Monitor, Command, Penelope } from "../..";
-import { Message, PrivateChannel } from "eris";
+import { Monitor, Command, Penelope, Guild } from "../..";
+import { Message, PrivateChannel, TextChannel } from "eris";
 
 export default class extends Monitor {
 
@@ -9,9 +9,15 @@ export default class extends Monitor {
 
     async exec(message: Message) {
 
+        const prefix = message.channel instanceof TextChannel
+            ? (await Guild.findOne({ where: { id: message.channel.guild.id } }))!.prefix
+            : this.client.prefix;
+
+        console.log(prefix);
+
         if (
             message.author.bot ||
-            [this.client.prefix, `<@${this.client.user.id}>`].every(i => !message.content.startsWith(i))
+            [prefix, `<@${this.client.user.id}>`].every(i => !message.content.startsWith(i))
         ) return;
 
         const potentialFlags = message.content.split(" ")
@@ -27,7 +33,7 @@ export default class extends Monitor {
         }
 
         message.content = message.content.split(" ").filter(str => !str.startsWith("--")).join(" ");
-        const params = this.resolveParams(message.content);
+        const params = this.resolveParams(message.content, prefix);
 
         const command = this.client.resolveCmd(params[0]);
         if (!command || !(await this.handle(command, message))) return;
@@ -40,11 +46,11 @@ export default class extends Monitor {
 
     }
 
-    private resolveParams(content: string): string[] {
+    private resolveParams(content: string, prefix: string): string[] {
         if (content.startsWith(`<@${this.client.user.id}>`)) {
             return content.split(" ").slice(1);
         } else {
-            return content.slice(this.client.prefix.length).split(" ");
+            return content.slice(prefix.length).split(" ");
         }
     }
 

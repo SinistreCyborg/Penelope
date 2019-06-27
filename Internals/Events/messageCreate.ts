@@ -1,5 +1,5 @@
-import { Event, Command, Monitor, Penelope, Console } from "../..";
-import { Message, PrivateChannel, TextChannel } from "eris";
+import { Event, Monitor, Penelope } from "../..";
+import { Message } from "eris";
 
 import { readdirSync } from "fs";
 import path from "path";

@@ -2,6 +2,7 @@ import Eris from "eris";
 import { Command, Console } from "..";
 
 import { createConnection } from "typeorm";
+import { Guild } from "..";
 
 import { readFileSync, readdirSync, lstatSync } from "fs";
 import path from "path";
@@ -55,6 +56,7 @@ export class Penelope extends Eris.Client {
         createConnection({
             type: "postgres",
             entities: [
+                Guild,
             ],
             synchronize: true,
             ...settings.database

@@ -1,0 +1,17 @@
+token: # https://discordapp.com/developers/applications/
+
+# This is the default prefix.
+# Different guilds can have different prefixes if they so desire.
+prefix: 
+
+# Put all API keys here
+keys:
+  TMDB: # https://developers.themoviedb.org/
+
+# Database Info
+database:
+  host: 
+  port: 
+  username: 
+  password: 
+  database: 

@@ -1,5 +1,5 @@
-import { Event, Command, Penelope } from "../..";
-import { Message, PrivateChannel } from "eris";
+import { Event, Command, Penelope, Guild } from "../..";
+import { Message, PrivateChannel, TextChannel } from "eris";
 
 export default class extends Event {
 
@@ -8,6 +8,16 @@ export default class extends Event {
     }
 
     async exec(message: Message) {
+
+        const guildPrefix = message.channel instanceof TextChannel ? await Guild.findOne({
+            select: [ "prefix" ],
+            where: { id: message.channel.guild.id }
+        }).then(guild => guild!.prefix) : undefined;
+
+        if (
+            message.channel instanceof TextChannel &&
+            guildPrefix && !message.content.startsWith(guildPrefix)
+        ) return;
 
         if (
             message.author.bot ||

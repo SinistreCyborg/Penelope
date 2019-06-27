@@ -3,8 +3,8 @@ import { Message, PrivateChannel } from "eris";
 
 export default class extends Monitor {
 
-    constructor(...args: [Penelope, string]) {
-        super(...args);
+    constructor(client: Penelope, name: string) {
+        super(client, name, 1);
     }
 
     async exec(message: Message) {

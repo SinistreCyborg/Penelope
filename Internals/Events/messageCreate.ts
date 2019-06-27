@@ -13,7 +13,8 @@ export default class extends Event {
 
     async exec(message: Message) {
 
-        for (const monitor of this.monitors) {
+        const inOrder = this.monitors.sort((a, b) => a.order - b.order);
+        for (const monitor of inOrder) {
             await monitor.exec(message);
         }
 

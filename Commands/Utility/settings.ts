@@ -9,6 +9,7 @@ export default class extends Command {
             name: "settings",
             aliases: ["setting", "set", "configure"],
             description: "Configure the bot to your liking.",
+            usage: "<key> <value>",
             category: "🛠 Utility",
             guildOnly: true,
             requiredPerms: ["manageGuild"]

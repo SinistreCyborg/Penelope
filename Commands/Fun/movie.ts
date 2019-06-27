@@ -7,6 +7,7 @@ export default class extends Command {
         super(client, {
             name: "movie",
             description: "Retrieve information about a movie.",
+            usage: "<movie name>",
             category: "🎉 Fun"
         });
     }

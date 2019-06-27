@@ -33,8 +33,9 @@ export class Penelope extends Eris.Client {
             if (!file.endsWith(".js")) continue;
 
             const event = new (require(path.join(evt_path, file)).default)(this, name(file));
-            Console.log("EventLoader", `Binding ${event.name} event.`);
+            if (event.init) event.init();
 
+            Console.log("EventLoader", `Binding ${event.name} event.`);
             this.on(event.name, (...args) => event.exec(...args));
 
         }

@@ -16,7 +16,9 @@
     "baseUrl": "./",
     "types": [ "node" ],
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "exclude": [
     "node_modules"

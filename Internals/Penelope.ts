@@ -1,6 +1,8 @@
 import Eris from "eris";
 import { Command, Console } from "..";
 
+import { createConnection } from "typeorm";
+
 import { readFileSync, readdirSync, lstatSync } from "fs";
 import path from "path";
 
@@ -47,6 +49,18 @@ export class Penelope extends Eris.Client {
             this.commands.set(command.name, command);
 
         }
+
+
+        const { database: { host, port } } = settings;
+        createConnection({
+            type: "postgres",
+            entities: [
+            ],
+            synchronize: true,
+            ...settings.database
+        })
+            .then(() => Console.success("Database", `Connected to ${host}:${port}`))
+            .catch((err: Error) => Console.error("Database", err.message));
 
     }
 

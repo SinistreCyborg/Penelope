@@ -13,4 +13,6 @@ export const APIs = {
 export const COLORS = {
     BLACK: 0x000000,
     WHITE: 0xffffff,
+    GREEN: 0x2ECC71,
+    RED: 0xE74C3C,
 };

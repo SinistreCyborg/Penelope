@@ -7,7 +7,7 @@ export default class extends Event {
         super(...args);
     }
 
-    async exec(guild: ErisGuild, user: User): Promise<void> {
+    async exec(guild: ErisGuild, user: User) {
 
         const { modLogs } = await Guild.findOneOrFail({
             select: [ "modLogs" ],

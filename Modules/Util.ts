@@ -1,3 +1,5 @@
+import chalk from "chalk";
+
 export class Util {
 
     static toProperCase(str: string): string {
@@ -18,6 +20,10 @@ export class Util {
 
     static random(input: any[]): any {
         return input[Math.floor(Math.random() * input.length)];
+    }
+
+    static shardMessage(message: string, id: number): string {
+        return `(${chalk.bold(`Shard ${id}`)}) ${message}`;
     }
 
 }

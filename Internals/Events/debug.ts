@@ -7,7 +7,9 @@ export default class extends Event {
     }
 
     exec(message: string, id: number) {
-        Console.warn(this.client.user.username, Util.shardMessage(message, id));
+        if (process.env.DEBUG) {
+            Console.warn("Penelope", Util.shardMessage(message, id));
+        }
     }
 
 }

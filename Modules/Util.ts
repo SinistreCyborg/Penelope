@@ -23,7 +23,7 @@ export class Util {
     }
 
     static shardMessage(message: string, id: number): string {
-        return `(${chalk.bold(`Shard ${id}`)}) ${message}`;
+        return `${id === undefined ? "" : chalk.bold(`(Shard ${id})`)} ${message}`;
     }
 
 }

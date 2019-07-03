@@ -8,4 +8,7 @@ export class Guild extends BaseEntity {
 
     @Column() prefix!: string;
 
+    @Column({ type: "varchar", length: 20, nullable: true })
+    modLogs!: string;
+
 }

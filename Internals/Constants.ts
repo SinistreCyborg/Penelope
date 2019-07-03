@@ -9,3 +9,8 @@ export const APIs = {
     IMGUR: (subreddit: string) => `https://imgur.com/r/${subreddit}/hot.json`,
     ANIMAL: (type: string) => `https://some-random-api.ml/img/${type}`,
 };
+
+export const COLORS = {
+    BLACK: 0x000000,
+    WHITE: 0xffffff,
+};

@@ -7,7 +7,7 @@ export default class extends Event {
     }
 
     exec(message: string, id: number) {
-        if (process.env.DEBUG) {
+        if ([...process.argv].includes("debug")) {
             Console.warn("Penelope", Util.shardMessage(message, id));
         }
     }

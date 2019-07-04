@@ -10,7 +10,7 @@ export default class extends Command {
             category: "🚨 Moderation",
             usage: "<enable|disable> [#channel]",
             guildOnly: true,
-            requiredPerms: ["manageGuild"]
+            requiredPerms: ["MANAGE_SERVER"]
         });
     }
 

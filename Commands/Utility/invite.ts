@@ -1,5 +1,5 @@
-import { Command, Penelope } from "../..";
-import { Message, Constants } from "eris";
+import { Command, Penelope, PERMS } from "../..";
+import { Message } from "eris";
 
 export default class extends Command {
 
@@ -8,7 +8,14 @@ export default class extends Command {
             name: "invite",
             description: "Add me to your Discord server!",
             category: "🛠 Utility",
-            requiredPerms: ["readMessages", "sendMessages", "embedLinks", "attachFiles", "readMessageHistory", "addReactions"]
+            requiredPerms: [
+                "READ_MESSAGES",
+                "SEND_MESSAGES",
+                "EMBED_LINKS", 
+                "ATTACH_FILES",
+                "READ_MESSAGE_HISTORY",
+                "ADD_REACTIONS"
+            ]
         });
     }
 
@@ -39,7 +46,7 @@ export default class extends Command {
             )
 
             // Get the perm number
-        ].map(perm => Constants.Permissions[perm]);
+        ].map(perm => PERMS[perm]);
 
     }
 

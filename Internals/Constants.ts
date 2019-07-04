@@ -1,5 +1,15 @@
 export const EMBED_COLOR = 12413569;
 
+export const PERMS: { [key: string]: number } = {
+    READ_MESSAGES: 1024,
+    SEND_MESSAGES: 2048,
+    EMBED_LINKS: 16384,
+    ATTACH_FILES: 32768,
+    READ_MESSAGE_HISTORY: 65536,
+    ADD_REACTIONS: 64,
+    MANAGE_SERVER: 32
+};
+
 export const APIs = {
     ANIME: (title: string) => `https://kitsu.io/api/edge/anime?filter[text]=${encodeURIComponent(title)}`,
     MOVIE: "https://api.themoviedb.org/3/search/movie",

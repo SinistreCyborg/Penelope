@@ -1,5 +1,5 @@
-import { Command, Penelope, EMBED_COLOR as color } from "../..";
-import { Message } from "eris";
+import { Command, Penelope, EMBED_COLOR as color, oneLine, stripIndents, commaLists } from "../..";
+import { Message, EmbedBase } from "eris";
 
 export default class extends Command {
 
@@ -16,31 +16,36 @@ export default class extends Command {
 
         if (potential) {
 
-            const command = this.client.resolveCmd(potential);
+            const { description, ...command } = this.client.resolveCmd(potential)!;
             if (!command || command.ownerOnly) throw "I don't recognize that command. Sorry!";
 
-            const embed = {
-                color, title: `@${this.client.user.username} ${command.name} ${command.usage} ${command.ownerOnly ? "⭐️" : ""}`.trim(),
-                description: command.description
+            const embed: EmbedBase = {
+                color, description,
+                title: oneLine`
+                    @${this.client.user.username}
+                    ${command.name}
+                    ${command.usage}
+                    ${command.ownerOnly ? "⭐️" : ""}
+                `
             };
 
             return message.channel.createMessage({ embed });
 
         }
 
-        let embed: any = {
+        let embed: EmbedBase = {
             color, title: "My Commands",
-            description: [
-                "**Support Server**: https://discord.gg/JuN5PCt",
-                "**Code Repository**: https://github.com/SinistreCyborg/Penelope"
-            ].join("\n"),
-            fields: []
+            fields: [],
+            description: stripIndents`
+                **Support Server**: https://discord.gg/JuN5PCt
+                **Code Repository**: https://github.com/SinistreCyborg/Penelope
+            `
         };
 
         for (const category of this.categories) {
-            embed.fields = [...embed.fields, {
+            embed.fields = [...embed.fields!, {
                 name: category,
-                value: `\`${this.cmdByCategory(category).join("`, `")}\``
+                value: commaLists`${this.cmdByCategory(category).map(e => `\`${e}\``)}`
             }];
         }
 

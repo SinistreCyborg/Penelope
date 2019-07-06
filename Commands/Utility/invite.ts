@@ -1,4 +1,4 @@
-import { Command, Penelope, PERMS } from "../..";
+import { Command, Penelope, PERMS, stripIndents } from "../..";
 import { Message } from "eris";
 
 export default class extends Command {
@@ -22,10 +22,10 @@ export default class extends Command {
     async exec(message: Message) {
 
         const permissions: number = this.permissions.reduce((x, y) => x + y, 0);
-        return message.channel.createMessage([
-            "Add me to your server!",
-            `<https://discordapp.com/oauth2/authorize?client_id=${this.client.user.id}&permissions=${permissions}&scope=bot>`
-        ].join("\n"));
+        return message.channel.createMessage(stripIndents`
+            Add me to your server!
+            <https://discordapp.com/oauth2/authorize?client_id=${this.client.user.id}&permissions=${permissions}&scope=bot>
+        `);
 
     }
 

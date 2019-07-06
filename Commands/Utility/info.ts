@@ -1,4 +1,4 @@
-import { Command, Penelope, EMBED_COLOR as color, REGION_EMOJIS } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, REGION_EMOJIS, stripIndents } from "../..";
 import { Message, Role, Guild, TextChannel, EmbedBase, Member, VoiceChannel } from "eris";
 import moment from "moment";
 
@@ -13,7 +13,7 @@ export default class extends Command {
             aliases: ["user-info", "server-info", "role-info"],
             description: "Get information about a user, a role, or the server itself.",
             category: "🛠 Utility",
-            usage: "[@user] [@role]",
+            usage: "[@user|@role]",
             guildOnly: true
         });
     }
@@ -52,10 +52,10 @@ export default class extends Command {
 
         return {
             title: `${name} (${id})`,
-            description: [
-                `Role created **${moment(createdAt).from(new Date())}**.`,
-                `**${((members.length / guild.members.size) * 100).toFixed(2)}%** of members **(${members.length}/${guild.members.size})** have this role.`
-            ].join("\n")
+            description: stripIndents`
+                Role created **${moment(createdAt).from(new Date())}**.
+                **${((members.length / guild.members.size) * 100).toFixed(2)}%** of members **(${members.length}/${guild.members.size})** have this role.
+            `
         };
 
     }
@@ -70,10 +70,10 @@ export default class extends Command {
         return {
             title: `${name}#${discrim} (${id})`,
             thumbnail: { url },
-            description: [
-                `Account created **${moment(createdAt).from(new Date())}**.`,
-                `Joined the server **${moment(joinedAt).from(new Date())}**.`
-            ].join("\n"),
+            description: stripIndents`
+                Account created **${moment(createdAt).from(new Date())}**.
+                Joined the server **${moment(joinedAt).from(new Date())}**.
+            `,
             fields: [{
                 name: `Roles [${roles.length}]`,
                 value: roles.map(e => guildRoles.get(e)!.mention).join(" ")

@@ -1,4 +1,4 @@
-import { Command, Penelope, Stopwatch, Type, Util } from "../..";
+import { Command, Penelope, Stopwatch, Type, Util, stripIndents } from "../..";
 import { inspect } from "util";
 import fetch from "node-fetch";
 import vm from "vm";
@@ -80,10 +80,10 @@ export default class extends Command {
             .then(res => res.json())
             .then(body => body.key);
 
-        return message.channel.createMessage([
-            "The output was too long. Here's a HasteBIN instead:",
-            `https://hastebin.com/${key}`
-        ].join("\n"));
+        return message.channel.createMessage(stripIndents`
+            The output was too long. Here's a HasteBIN instead:
+            https://hastebin.com/${key}
+        `);
 
     }
 

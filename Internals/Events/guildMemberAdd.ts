@@ -1,4 +1,4 @@
-import { Event, Penelope, Guild, COLORS } from "../..";
+import { Event, Penelope, Guild, COLORS, stripIndents } from "../..";
 import { Guild as ErisGuild, Member, TextChannel } from "eris";
 import moment from "moment";
 
@@ -20,11 +20,11 @@ export default class extends Event {
             color: COLORS.GREEN,
             title: `📥 **${name}#${discrim}** has \`joined\` the server. (${id})`,
             timestamp: new Date().toISOString(),
-            description: [
-                `Account created **${moment(createdAt).from(new Date())}**.`,
-                `We now have **${guild.members.size}** members.`
-            ].join("\n"),
-            footer: { icon_url, text: "User Join" }
+            footer: { icon_url, text: "User Join" },
+            description: stripIndents`
+                Account created **${moment(createdAt).from(new Date())}**.
+                We now have **${guild.members.filter(e => !e.user.bot).length}** humans.
+            `
         } });
 
     }

@@ -1,4 +1,4 @@
-import { Command, Penelope } from "../..";
+import { Command, Penelope, oneLine } from "../..";
 import { Message, PrivateChannel } from "eris";
 
 export default class extends Command {
@@ -16,7 +16,11 @@ export default class extends Command {
         const ping = await message.channel.createMessage("Pinging...");
 
         const round_trip = ping.timestamp - message.timestamp;
-        return ping.edit(`🏓 Pong! Round-trip took: ${round_trip}ms. Latency: ${this.latency(message)}ms.`);
+        return ping.edit(oneLine`
+            🏓 Pong!
+            Round-trip took: ${round_trip}ms.
+            Latency: ${this.latency(message)}ms.
+        `);
 
     }
 

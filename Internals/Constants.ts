@@ -26,3 +26,23 @@ export const COLORS = {
     GREEN: 0x2ECC71,
     RED: 0xE74C3C,
 };
+
+export const REGION_EMOJIS: { [key: string]: any } = {
+    "us-east": "🇺🇸",
+    "us-central": "🇺🇸",
+    "us-west": "🇺🇸",
+    "us-south": "🇺🇸",
+    "eu-west": "🇪🇺",
+    "eu-central": "🇪🇺",
+    "frankfurt": "🇩🇪",
+    "amsterdam": "🇳🇱",
+    "russia": "🇷🇺",
+    "london": "🇬🇧",
+    "sydney": "🇦🇺",
+    "singapore": "🇸🇬",
+    "hongkong": "🇭🇰",
+    "japan": "🇯🇵",
+    "india": "🇮🇳",
+    "brazil": "🇧🇷",
+    "southafrica": "🇿🇦"
+};

@@ -18,6 +18,7 @@ export const APIs = {
     XKCD: "http://xkcd.com/info.0.json",
     IMGUR: (subreddit: string) => `https://imgur.com/r/${subreddit}/hot.json`,
     ANIMAL: (type: string) => `https://some-random-api.ml/img/${type}`,
+    WIKI: (query: string) => `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`,
 };
 
 export const COLORS = {

@@ -14,6 +14,7 @@ export { Guild } from "./Internals/Models/Guild";
 export { Case } from "./Internals/Models/Case";
 
 export { default as fetch } from "node-fetch";
+export * from "common-tags";
 
 import { Penelope as Client } from "./Internals/Penelope";
 new Client().connect();

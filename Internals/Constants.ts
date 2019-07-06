@@ -19,6 +19,7 @@ export const APIs = {
     IMGUR: (subreddit: string) => `https://imgur.com/r/${subreddit}/hot.json`,
     ANIMAL: (type: string) => `https://some-random-api.ml/img/${type}`,
     WIKI: (query: string) => `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`,
+    ITUNES: (query: string, nsfw: boolean) => `https://itunes.apple.com/search?term=${encodeURIComponent(query)}&media=music&entity=song&limit=1&nsfw=${nsfw ? "yes" : "no"}`,
 };
 
 export const COLORS = {

@@ -1,7 +1,5 @@
 import { Command, Penelope, Util, EMBED_COLOR as color, APIs, fetch as $ } from "../..";
 import { Message } from "eris";
-import { resolveSoa } from "dns";
-import messageCreate from "Internals/Events/messageCreate";
 
 export default class extends Command {
 

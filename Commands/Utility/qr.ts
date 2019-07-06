@@ -1,4 +1,4 @@
-import { Command, Penelope, EMBED_COLOR as color } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, oneLineTrim } from "../..";
 import { Message, EmbedBase } from "eris";
 
 export default class extends Command {
@@ -16,7 +16,13 @@ export default class extends Command {
     async exec(message: Message, ...content: string[]) {
 
         if (!content.length) throw "You must specify content to make a code with!";
-        const url = `https://api.qrserver.com/v1/create-qr-code?margin=20px&color=${new Number(color).toString(16)}&bgcolor=34363B&data=${encodeURIComponent(content.join(" "))}`;
+        const url = oneLineTrim`
+            https://api.qrserver.com/v1/create-qr-code
+            ?margin=20px
+            &color=${Number(color).toString(16)}
+            &bgcolor=34363B
+            &data=${encodeURIComponent(content.join(" "))}
+        `;
 
         return message.channel.createMessage({ embed: {
             color, image: { url },

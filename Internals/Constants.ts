@@ -20,6 +20,7 @@ export const APIs = {
     ANIMAL: (type: string) => `https://some-random-api.ml/img/${type}`,
     WIKI: (query: string) => `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`,
     ITUNES: (query: string, nsfw: boolean) => `https://itunes.apple.com/search?term=${encodeURIComponent(query)}&media=music&entity=song&limit=1&nsfw=${nsfw ? "yes" : "no"}`,
+    WEBSTER: (word: string) => `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}`,
 };
 
 export const COLORS = {

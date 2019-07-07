@@ -1,9 +1,11 @@
-import { Entity, BaseEntity, Column } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Case extends BaseEntity {
 
-    @Column() id!: number;
+    @PrimaryGeneratedColumn() id!: number;
+
+    @Column() caseID!: number;
 
     @Column({ nullable: true }) reason!: string;
 

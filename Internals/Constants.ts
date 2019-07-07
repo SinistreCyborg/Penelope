@@ -21,6 +21,7 @@ export const APIs = {
     WIKI: (query: string) => `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`,
     ITUNES: (query: string, nsfw: boolean) => `https://itunes.apple.com/search?term=${encodeURIComponent(query)}&media=music&entity=song&limit=1&nsfw=${nsfw ? "yes" : "no"}`,
     WEBSTER: (word: string) => `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}`,
+    IEX: (symbol: string, key: string) => `https://cloud.iexapis.com/stable/stock/${symbol}/quote?token=${key}`,
 };
 
 export const COLORS = {

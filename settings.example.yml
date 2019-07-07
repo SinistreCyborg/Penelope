@@ -8,6 +8,7 @@ prefix:
 keys:
   TMDB: # https://developers.themoviedb.org/
   WEBSTER: # https://dictionaryapi.com
+  IEX_CLOUD: # https://iexcloud.io
 
 # Database Info
 database:

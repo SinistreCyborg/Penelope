@@ -1,4 +1,4 @@
-import { Command, Penelope, APIs, fetch as $, EMBED_COLOR as color, stripIndents } from "../..";
+import { Command, Penelope, APIs, fetch as $, EMBED_COLOR as color, stripIndents, Util } from "../..";
 import { Message, TextChannel } from "eris";
 import moment from "moment";
 
@@ -27,10 +27,7 @@ export default class extends Command {
 
         return message.channel.createMessage({ embed: {
             color, thumbnail: { url },
-            footer: {
-                text: `Requested by ${message.author.username}#${message.author.discriminator}`,
-                icon_url: message.author.avatarURL
-            },
+            footer: Util.genericFooter(message.author),
             description: stripIndents`
                 **__[${trackName}](${trackViewUrl})__** by [${artistName}](${artistViewUrl}) ${trackExplicitness.startsWith("not") ? "" : "🔞"}
                 ${primaryGenreName} • ${Math.floor(length/1000/60)}:${Math.floor(length/1000%60)}

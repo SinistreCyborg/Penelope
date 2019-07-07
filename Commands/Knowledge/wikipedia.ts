@@ -1,4 +1,4 @@
-import { Command, Penelope, APIs, fetch as $, EMBED_COLOR as color, stripIndents } from "../..";
+import { Command, Penelope, APIs, fetch as $, EMBED_COLOR as color, stripIndents, Util } from "../..";
 import { Message } from "eris";
 
 export default class extends Command {
@@ -24,15 +24,12 @@ export default class extends Command {
 
         return message.channel.createMessage({ embed: {
             color, thumbnail: { url, width, height },
+            footer: Util.genericFooter(message.author),
             description: stripIndents`
                 **__[${title}](${content_urls.desktop.page})__**
                 **${description}**\n
                 ${extract}
-            `,
-            footer: {
-                text: `Requested by ${message.author.username}#${message.author.discriminator}`,
-                icon_url: message.author.avatarURL
-            }
+            `
         } });
 
     }

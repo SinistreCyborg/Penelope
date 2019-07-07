@@ -1,4 +1,4 @@
-import { Command, Penelope, EMBED_COLOR as color } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, Util } from "../..";
 import { Message } from "eris";
 
 export default class extends Command {
@@ -19,12 +19,9 @@ export default class extends Command {
 
         return message.channel.createMessage({ embed: {
             color, title: `${user.username}#${user.discriminator}'s avatar`,
+            footer: Util.genericFooter(message.author),
             image: {
                 url: user.dynamicAvatarURL("jpg", 2048)
-            },
-            footer: {
-                text: `Requested by ${message.author.username}#${message.author.discriminator}`,
-                icon_url: message.author.avatarURL
             }
         } });
 

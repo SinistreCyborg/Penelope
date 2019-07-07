@@ -1,4 +1,4 @@
-import { Command, Penelope, APIs, fetch as $, EMBED_COLOR as color, stripIndents } from "../..";
+import { Command, Penelope, APIs, fetch as $, EMBED_COLOR as color, stripIndents, Util } from "../..";
 import { Message } from "eris";
 import moment from "moment";
 
@@ -25,6 +25,7 @@ export default class extends Command {
 
         return message.channel.createMessage({ embed: {
             color, thumbnail: { url: `https://storage.googleapis.com/iex/api/logos/${symbol}.png` },
+            footer: Util.genericFooter(message.author),
             description: stripIndents`
                 **__[${name}](https://finance.yahoo.com/quote/${symbol})__** ${price} USD ${change} (${(percent * 100).toFixed(2)}%)
                 Closed **${moment(quote.closeTime).from(new Date())}**.
@@ -61,11 +62,7 @@ export default class extends Command {
                 name: "52-wk Low",
                 value: String(quote.week52Low),
                 inline: true
-            }],
-            footer: {
-                text: `Requested by ${message.author.username}#${message.author.discriminator}`,
-                icon_url: message.author.avatarURL
-            }
+            }]
         } });
 
     }

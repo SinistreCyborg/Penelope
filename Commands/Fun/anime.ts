@@ -1,4 +1,4 @@
-import { Command, Penelope, EMBED_COLOR as color, APIs, fetch as $ } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, APIs, fetch as $, Util } from "../..";
 import { Message, TextChannel } from "eris";
 
 export default class extends Command {
@@ -38,10 +38,7 @@ export default class extends Command {
         return message.channel.createMessage({ embed: {
             color, title: `${canonicalTitle} (${subtype}-${ageRating})`, image: { url },
             url: `https://www.crunchyroll.com/${slug}`,
-            footer: {
-                text: `Requested by ${message.author.username}#${message.author.discriminator}`,
-                icon_url: message.author.avatarURL
-            }
+            footer: Util.genericFooter(message.author)
         } });
 
     }

@@ -1,4 +1,5 @@
 import chalk from "chalk";
+import { User } from "eris";
 
 export class Util {
 
@@ -24,6 +25,12 @@ export class Util {
 
     static shardMessage(message: string, id: number): string {
         return `${id === undefined ? "" : chalk.bold(`(Shard ${id})`)} ${message}`;
+    }
+
+    static genericFooter({ username, discriminator, avatarURL: icon_url }: User): { text: string; icon_url: string; } {
+        return {
+            icon_url, text: `Requested by ${username}#${discriminator}`,
+        };
     }
 
 }

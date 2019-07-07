@@ -1,4 +1,4 @@
-import { Command, Penelope, EMBED_COLOR as color, REGION_EMOJIS, stripIndents } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, REGION_EMOJIS, stripIndents, Util } from "../..";
 import { Message, Role, Guild, TextChannel, EmbedBase, Member, VoiceChannel } from "eris";
 import moment from "moment";
 
@@ -25,10 +25,7 @@ export default class extends Command {
 
         const embed = {
             ...this[(this.subject!.constructor.name).toLowerCase() + "Info"],
-            color, footer: {
-                text: `Requested by ${message.author.username}#${message.author.discriminator}`,
-                icon_url: message.author.avatarURL
-            }
+            color, footer: Util.genericFooter(message.author)
         };
 
         return message.channel.createMessage({ embed });

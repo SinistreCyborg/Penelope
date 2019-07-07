@@ -1,4 +1,4 @@
-import { Command, Penelope, EMBED_COLOR as color, oneLine, stripIndents, commaLists } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, oneLine, stripIndents, commaLists, Util } from "../..";
 import { Message, EmbedBase } from "eris";
 
 export default class extends Command {
@@ -21,6 +21,7 @@ export default class extends Command {
 
             const embed: EmbedBase = {
                 color, description,
+                footer: Util.genericFooter(message.author),
                 title: oneLine`
                     @${this.client.user.username}
                     ${command.name}
@@ -35,6 +36,7 @@ export default class extends Command {
 
         let embed: EmbedBase = {
             color, title: "My Commands",
+            footer: Util.genericFooter(message.author),
             fields: [],
             description: stripIndents`
                 **Support Server**: https://discord.gg/JuN5PCt

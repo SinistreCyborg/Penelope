@@ -20,12 +20,9 @@ export default class extends Command {
         return message.channel.createMessage({ embed: {
             color, title,
             url: `https://reddit.com${subreddit}`,
+            footer: Util.genericFooter(message.author),
             image: {
                 url: `http://imgur.com/${hash}${ext.replace(/\?.*/, "")}`
-            },
-            footer: {
-                text: `Requested by ${message.author.username}#${message.author.discriminator}`,
-                icon_url: message.author.avatarURL
             }
         } });
 

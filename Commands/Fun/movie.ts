@@ -1,4 +1,4 @@
-import { Command, Penelope, EMBED_COLOR as color, APIs, fetch as $ } from "../..";
+import { Command, Penelope, EMBED_COLOR as color, APIs, fetch as $, Util } from "../..";
 import { Message, TextChannel } from "eris";
 
 export default class extends Command {
@@ -35,12 +35,9 @@ export default class extends Command {
         return message.channel.createMessage({ embed: {
             color, title, description,
             url: `https://www.themoviedb.org/movie/${id}`,
+            footer: Util.genericFooter(message.author),
             image: {
                 url: `https://image.tmdb.org/t/p/original${poster_path}`
-            },
-            footer: {
-                text: `Requested by ${message.author.username}#${message.author.discriminator}`,
-                icon_url: message.author.avatarURL
             }
         } });
 

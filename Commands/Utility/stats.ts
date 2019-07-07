@@ -17,10 +17,7 @@ export default class extends Command {
         let embed: EmbedBase = {
             color, fields: this.base,
             timestamp: new Date().toISOString(),
-            footer: {
-                text: `Requested by ${message.author.username}#${message.author.discriminator}`,
-                icon_url: message.author.avatarURL
-            }
+            footer: Util.genericFooter(message.author)
         };
 
         // Send info about node.

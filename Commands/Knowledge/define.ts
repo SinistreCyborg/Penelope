@@ -1,4 +1,4 @@
-import { Command, Penelope, fetch as $, APIs, EMBED_COLOR as color, stripIndents } from "../..";
+import { Command, Penelope, fetch as $, APIs, EMBED_COLOR as color, stripIndents, Util } from "../..";
 import { Message } from "eris";
 
 export default class extends Command {
@@ -22,7 +22,7 @@ export default class extends Command {
 
         if (typeof info === "string") throw "Idk what that word is, sorry.";
         return message.channel.createMessage({ embed: {
-            color,
+            color, footer: Util.genericFooter(message.author),
             description: stripIndents`
                 **__[${info.meta.stems[0]}](https://www.merriam-webster.com/dictionary/${info.meta.stems[0]})__** (${info.fl})
                 ${info.shortdef.map((def: string, i: number) => `(${i + 1}) ${def}`).join("\n")}

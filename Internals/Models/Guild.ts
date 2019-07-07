@@ -15,7 +15,4 @@ export class Guild extends BaseEntity {
     @Column({ type: "varchar", length: 20, nullable: true })
     memberLogs!: string;
 
-    @OneToMany(() => Case, case => case.guild)
-    cases!: Case[];
-
 }

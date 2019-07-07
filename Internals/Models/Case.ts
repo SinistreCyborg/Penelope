@@ -1,5 +1,4 @@
-import { Entity, BaseEntity, Column, ManyToOne } from "typeorm";
-import { Guild } from "../..";
+import { Entity, BaseEntity, Column } from "typeorm";
 
 @Entity()
 export class Case extends BaseEntity {
@@ -11,7 +10,7 @@ export class Case extends BaseEntity {
     @Column({ type: "varchar", length: 20 })
     userID!: string;
 
-    @ManyToOne(() => Guild, guild => guild.cases)
-    guild!: Guild;
+    @Column({ type: "varchar", length: 20 })
+    guildID!: string;
 
 }

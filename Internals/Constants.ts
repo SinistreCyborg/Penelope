@@ -29,6 +29,7 @@ export const COLORS = {
     WHITE: 0xffffff,
     GREEN: 0x2ECC71,
     RED: 0xE74C3C,
+    ORANGE: 0xE67E22,
 };
 
 export const REGION_EMOJIS: { [key: string]: any } = {

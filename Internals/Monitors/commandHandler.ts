@@ -48,7 +48,7 @@ export default class extends Monitor {
         if (content.startsWith(`<@${this.client.user.id}>`)) {
             return content.split(" ").slice(1);
         } else {
-            return content.slice(prefix.length).split(" ");
+            return content.slice(prefix.length).trim().split(/\s/g);
         }
     }
 

@@ -12,6 +12,7 @@ export { Util } from "./Modules/Util";
 
 export { Guild } from "./Internals/Models/Guild";
 export { Case } from "./Internals/Models/Case";
+export { Tag } from "./Internals/Models/Tag";
 
 export { default as fetch } from "node-fetch";
 export * from "common-tags";

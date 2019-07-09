@@ -5,9 +5,9 @@ export default class extends Command {
 
     constructor(client: Penelope) {
         super(client, {
-            name: "mod-log",
-            description: "Set the channel to log moderation commands.",
-            category: "🚨 Moderation",
+            name: "member-log",
+            description: "Set the channel to log when users join/leave.",
+            category: "⚙️ Config",
             usage: "<enable|disable> [#channel]",
             guildOnly: true,
             requiredPerms: ["MANAGE_SERVER"]
@@ -20,22 +20,22 @@ export default class extends Command {
             where: { id: (message.channel as TextChannel).guild.id }
         });
 
-        const old = guild!.modLogs;
+        const old = guild!.memberLogs;
         switch (option) {
             case "enable":
 
-                guild!.modLogs = message.channelMentions![0] || message.channel.id;
+                guild!.memberLogs = message.channelMentions![0] || message.channel.id;
                 await guild!.save();
 
-                await message.channel.createMessage(`✅ Enabled mod-logs in <#${guild!.modLogs}>${old ? ` instead of <#${old}>` : ""}`);
+                await message.channel.createMessage(`✅ Enabled member-logs in <#${guild!.memberLogs}>${old ? ` instead of <#${old}>` : ""}`);
                 break;
 
             case "disable":
 
-                guild!.modLogs = "";
+                guild!.memberLogs = "";
                 await guild!.save();
 
-                await message.channel.createMessage(`✅ Disabled mod-logs in <#${old}>`);
+                await message.channel.createMessage(`✅ Disabled member-logs in <#${old}>`);
                 break;
         
             default:

@@ -7,7 +7,7 @@ export default class extends Command {
         super(client, {
             name: "message-log",
             description: "Set the channel to log when messages are edited/deleted.",
-            category: "🚨 Moderation",
+            category: "⚙️ Config",
             usage: "<enable|disable> [#channel]",
             guildOnly: true,
             requiredPerms: ["MANAGE_SERVER"]

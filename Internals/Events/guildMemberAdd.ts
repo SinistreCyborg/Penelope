@@ -8,12 +8,22 @@ export default class extends Event {
         super(...args);
     }
 
-    async exec(guild: ErisGuild, { id, user: { username: name, discriminator: discrim, createdAt }, staticAvatarURL: icon_url }: Member) {
+    async exec(guild: ErisGuild, member: Member) {
 
-        const { memberLogs } = await Guild.findOneOrFail({
-            select: [ "memberLogs" ],
+        const {
+            id, staticAvatarURL: icon_url,
+            user: { username: name, discriminator: discrim, createdAt }
+        } = member;
+
+        const { memberLogs, autorole } = await Guild.findOneOrFail({
+            select: [ "memberLogs", "autorole" ],
             where: { id: guild.id }
         });
+
+        if (autorole) {
+            const role = guild.roles.get(autorole);
+            if (role) await member.addRole(autorole);
+        }
 
         const channel = guild.channels.get(memberLogs) as TextChannel;
         if (channel) channel.createMessage({ embed: {

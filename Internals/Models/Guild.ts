@@ -18,4 +18,7 @@ export class Guild extends BaseEntity {
     @Column({ type: "varchar", length: 20, nullable: true })
     messageLogs!: string;
 
+    @Column({ type: "varchar", length: 20, nullable: true })
+    autorole!: string;
+
 }

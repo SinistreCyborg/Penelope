@@ -101,7 +101,7 @@ export default class extends Command {
     private async remove(message: Message, tag: Tag, title: string): Promise<Message> {
 
         await tag.remove();
-        return message.channel.createMessage(`Edited tag **${title}**`);
+        return message.channel.createMessage(`Removed tag **${title}**`);
 
     }
 

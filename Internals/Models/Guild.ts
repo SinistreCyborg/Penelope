@@ -1,5 +1,5 @@
-import { Entity, BaseEntity, Column, PrimaryColumn, OneToMany } from "typeorm";
-import { Case } from "../..";
+import { Entity, BaseEntity, Column, PrimaryColumn } from "typeorm";
+import { settings } from "../..";
 
 @Entity()
 export class Guild extends BaseEntity {
@@ -7,7 +7,7 @@ export class Guild extends BaseEntity {
     @PrimaryColumn({ type: "varchar", length: 20 })
     id!: string;
 
-    @Column() prefix!: string;
+    @Column({ default: settings.prefix }) prefix!: string;
 
     @Column({ type: "varchar", length: 20, nullable: true })
     modLogs!: string;

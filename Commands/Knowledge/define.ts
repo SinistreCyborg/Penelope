@@ -16,7 +16,7 @@ export default class extends Command {
     async exec(message: Message, word: string) {
 
         if (!word) throw "You must specify a word to define!";
-        const info = await $(APIs.WEBSTER(word) + `?key=${this.client.keys.WEBSTER}`)
+        const info = await $(APIs.WEBSTER(word))
             .then(res => res.json())
             .then(body => body[0]);
 

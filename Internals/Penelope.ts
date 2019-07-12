@@ -1,14 +1,11 @@
 import Eris from "eris";
-import { Command, Console } from "..";
+import { Command, Console, settings } from "..";
 
 import { createConnection } from "typeorm";
 import { Guild, Case, Tag } from "..";
 
-import { readFileSync, readdirSync, lstatSync } from "fs";
+import { readdirSync, lstatSync } from "fs";
 import path from "path";
-
-import yaml from "js-yaml";
-const settings = yaml.safeLoad(readFileSync(path.join(process.cwd(), "settings.yml"), "utf-8"));
 
 const name = (file: string) => file.split(".")[0];
 export class Penelope extends Eris.Client {

@@ -16,13 +16,7 @@ export default class extends Command {
 
         if (!name.length) throw "You must specify a search term!";
 
-        const url: any = new URL(APIs.MOVIE)
-        url.search = new URLSearchParams([
-            ["api_key", this.client.keys.TMDB],
-            ["query", name.join(" ")]
-        ]);
-
-        const { title, poster_path, overview: description, adult, id } = await $(url)
+        const { title, poster_path, overview: description, adult, id } = await $(APIs.MOVIE(name.join(" ")))
             .then(res => res.json())
             .then(body => body.results[0]);
 

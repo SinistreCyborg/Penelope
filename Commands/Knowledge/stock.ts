@@ -19,7 +19,7 @@ export default class extends Command {
         const {
             latestPrice: price, changePercent: percent, change,
             companyName: name, symbol, ...quote
-        } = await $(APIs.IEX(company, this.client.keys.IEX_CLOUD))
+        } = await $(APIs.IEX(company))
             .then(res => res.json())
             .catch(() => { throw "I can't find a stock symbol by that name!" });
 
